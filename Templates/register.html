@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+<head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</head>
+
+{% load static %}
+{% block content %}
+<div class="topnav" style="margin:0;font:font-family: Arial, Helvetica, sans-serif;background-color:#333333;overflow: hidden;"><p style="margin-left:10px;margin-top:8px;color:white;font-size:45px;"><B>HSBS BANK</B></div>
+<br><br><br>
+
+<center><h1>Register here</h1></center><br><br>
+<form action="/register/" method="post">
+    {% csrf_token %}
+    <center><input type="text" name="username" placeholder="User Name" style="font-size:25px" required></center><br><br>
+    <center><input type="password" name="password" placeholder="Password" style="font-size:25px" required></center><br><br>
+    <center><input type="password" name="cpassword" placeholder="Confirm Password" style="font-size:25px" required></center><br><br>
+
+    {% for msg in messages %}
+    <div class="">
+        <center><h4 style="color:red;">{{msg}}</h4></center>
+    </div>
+    {% endfor %}
+    <br>
+    <center><input type="submit" value="submit" class="btn btn-success " style="font-size:25px;width:200px"></center>
+</form>
+{% endblock %}
